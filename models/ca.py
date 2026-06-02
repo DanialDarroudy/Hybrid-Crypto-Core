@@ -1,4 +1,5 @@
 from models.certificate import Certificate
+from core.rsa import *
 
 
 class CA:
@@ -7,7 +8,9 @@ class CA:
         self.private_key = None
 
     def generate_rsa_keys(self):
-        pass
+        rsa_keys = self.generate_rsa_keys()
+        self.public_key = rsa_keys["public_key"]
+        self.private_key = rsa_keys["public_key"]
 
     def issue_certificate(self, user) -> "Certificate":
         pass
