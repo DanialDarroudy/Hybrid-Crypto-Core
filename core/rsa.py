@@ -30,7 +30,8 @@ def generate_rsa_keys():
               interval_primes.append(x)
     
     p = random.choice(interval_primes)
-    q = random.choice(interval_primes.remove(p))
+    interval_primes.remove(p)
+    q = random.choice(interval_primes)
     n = p*q
     phi = (p-1)*(q-1)
     e = 257
