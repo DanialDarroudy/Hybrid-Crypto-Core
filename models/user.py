@@ -1,6 +1,8 @@
+from core.rsa import *
+
 class User:
     def __init__(self, name: str):
-        self.name = name
+        self.user_id = name
         self.public_key = None
         self.private_key = None
         self.certificate = None
@@ -9,7 +11,9 @@ class User:
         self.dh_public = None
 
     def generate_rsa_keys(self):
-        pass
+        rsa_keys = generate_rsa_keys()
+        self.public_key = rsa_keys["public_key"]
+        self.private_key = rsa_keys["private_key"]
 
     def generate_dh_values(self, p: int, g: int):
         pass
