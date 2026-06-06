@@ -23,7 +23,12 @@ def main():
         elif choice == "5":
             pass
         elif choice == "6":
+            print("Goodbye 😊")
             break
+        else:
+            print("Invalid choice. Please select a valid option (1-6).")
+        
+        print("\n")
 
 
 if __name__ == "__main__":
