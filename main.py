@@ -13,7 +13,27 @@ def main():
         choice = input("Choice: ")
 
         if choice == "1":
-            pass
+            ca.generate_rsa_keys()
+            print("CA RSA keys generated.")
+
+            user_a.generate_rsa_keys()
+            print("User A RSA keys generated.")
+
+            user_b.generate_rsa_keys()
+            print("User B RSA keys generated.")
+
+            user_a.certificate = ca.issue_certificate(user_a)
+            print("Certificate issued for user A")
+
+            user_b.certificate = ca.issue_certificate(user_b)
+            print("Certificate issued for user B")
+
+            a_certificate_vefication = ca.verify_certificate(user_a.certificate)
+            print(f"User A certificate verification: {a_certificate_vefication}")
+
+            b_certificate_vefication = ca.verify_certificate(user_b.certificate)
+            print(f"User B certificate verification: {b_certificate_vefication}")
+
         elif choice == "2":
             pass
         elif choice == "3":
