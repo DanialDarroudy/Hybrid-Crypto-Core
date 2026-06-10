@@ -37,13 +37,13 @@ SECURE CRYPTOGRAPHY SYSTEM
 Choice: 1
 
 [ system Initializing... ]
-[✓] CA RSA keys generated.
-[✓] User A RSA keys generated.
-[✓] User B RSA keys generated.
-[✓] Certificate issued for User A by CA.
-[✓] Certificate issued for User B by CA.
-[✓] User A checks own Certificate: Valid
-[✓] User B checks own Certificate: Valid
+CA RSA keys generated.
+User A RSA keys generated.
+User B RSA keys generated.
+Certificate issued for User A by CA.
+Certificate issued for User B by CA.
+User A checks own Certificate: Valid
+User B checks own Certificate: Valid
 
 [+] System initialized successfully!
 
@@ -61,11 +61,11 @@ SECURE CRYPTOGRAPHY SYSTEM
 Choice: 2
 
 [ Establishing Shared Key & Authenticating... ]
-[✓] Signatures Verified! MITM attack prevented.
+Signatures Verified! MITM attack prevented.
 
 [+] Shared Key Established Successfully!
-    User A Master Key: 40446
-    User B Master Key: 40446
+    User A Master Key: 10051
+    User B Master Key: 10051
 
 
 ==================================================
@@ -82,7 +82,7 @@ Choice: 3
 
 Enter message to encrypt (User A): Hi System!
 
-[+] Encrypted Blocks: [60108, 14611, 64045, 49549, 25874, 16204]
+[+] Encrypted Blocks: [51392, 7708, 7189, 64863, 29558, 40735]
     (These blocks are stored in memory for Option 4)
 
 
@@ -99,8 +99,8 @@ SECURE CRYPTOGRAPHY SYSTEM
 Choice: 4
 
 --- Decryption Process ---
-Hint: Last encrypted blocks in memory are: [60108, 14611, 64045, 49549, 25874, 16204]
-Enter encrypted blocks separated by comma (or press Enter to use blocks in memory): 
+Hint: Last encrypted blocks in memory are: [51392, 7708, 7189, 64863, 29558, 40735]
+Enter encrypted blocks separated by comma (or press Enter to use blocks in memory):
 
 [+] Decrypted Message at User B: Hi System!
 
@@ -118,8 +118,8 @@ SECURE CRYPTOGRAPHY SYSTEM
 Choice: 4
 
 --- Decryption Process ---
-Hint: Last encrypted blocks in memory are: [60108, 14611, 64045, 49549, 25874, 16204]
-Enter encrypted blocks separated by comma (or press Enter to use blocks in memory): 60108, 14611, 64045, 49549, 25874, 16204
+Hint: Last encrypted blocks in memory are: [51392, 7708, 7189, 64863, 29558, 40735]
+Enter encrypted blocks separated by comma (or press Enter to use blocks in memory): 51392, 7708, 7189, 64863, 29558, 40735
 
 [+] Decrypted Message at User B: Hi System!
 
@@ -137,14 +137,14 @@ SECURE CRYPTOGRAPHY SYSTEM
 Choice: 5
 
 ==================== SYSTEM STATUS ====================
-CA Public Key         : (9017, 257)
-User A Public Key     : (7493, 257)
-User B Public Key     : (10679, 257)
+CA Public Key         : (4897, 257)
+User A Public Key     : (26549, 257)
+User B Public Key     : (15931, 257)
 User A Certificate    : Issued & Valid
 User B Certificate    : Issued & Valid
-User A Master Key     : 40446
-User B Master Key     : 40446
-Latest Encrypted Data : [60108, 14611, 64045, 49549, 25874, 16204]
+User A Master Key     : 10051
+User B Master Key     : 10051
+Latest Encrypted Data : [51392, 7708, 7189, 64863, 29558, 40735]
 =======================================================
 
 
