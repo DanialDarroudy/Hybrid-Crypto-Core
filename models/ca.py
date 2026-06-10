@@ -14,11 +14,11 @@ class CA:
         self.private_key = rsa_keys["private_key"]
 
     def issue_certificate(self, user) -> "Certificate":
-        n ,e = user.public_key
+        n, e = user.public_key
         data = f"{user.user_id}{n}{e}"
         signature = sign(data, self.private_key)
-        return Certificate(user.user_id , n, e, signature)
+        return Certificate(user.user_id, n, e, signature)
 
-    def verify_certificate(self, certificate) -> bool:
+    def verify_certificate(self, certificate: Certificate) -> bool:
         data = certificate.data_to_sign()
         return verify(data, certificate.ca_signature, self.public_key)
