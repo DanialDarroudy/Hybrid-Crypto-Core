@@ -18,10 +18,8 @@ def extended_euclidean(a: int, b: int):
     return g, x, y
 
 
-def mod_inverse(e: int, phi: int) -> Any | None:
+def mod_inverse(e: int, phi: int) -> int:
     g, x, _ = extended_euclidean(e, phi)
-    if g != 1:
-        return None
     return x % phi
 
 
@@ -37,8 +35,6 @@ def generate_rsa_keys():
         e = 257
 
         d = mod_inverse(e, phi)
-        if d is None:
-            continue
 
         return {
             "public_key": (n, e),
