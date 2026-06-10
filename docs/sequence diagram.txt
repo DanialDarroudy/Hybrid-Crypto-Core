@@ -1,0 +1,32 @@
+[CA]                  [User A]                                   [User B]
+ |                       |                                          |
+ |=== 1. Generate RSA Keys (n, e, d) for ALL entities =============>|
+ |                       |                                          |
+ |--- Issue Cert(A) ---->|                                          |
+ |                       |                                          |
+ |-----------------------|-------------- Issue Cert(B) ------------>|
+ |                       |                                          |
+ |                       |=== 2. Establish Shared Key (DH) ========>|
+ |                       |                                          |
+ |                       |  (Cert_A, pub_val_A, Sign(pub_val_A))    |
+ |                       | ---------------------------------------> |
+ |                       |                                          |
+ |                       |  (Cert_B, pub_val_B, Sign(pub_val_B))    |
+ |                       | <--------------------------------------- |
+ |                       |                                          |
+ |                 [Verify Cert_B]                            [Verify Cert_A]
+ |              [Verify Sign with Pub_B]                   [Verify Sign with Pub_A]
+ |              [Compute K_A = Y_B ^ x_A]                  [Compute K_B = Y_A ^ x_B]
+ |               [Generate Master Key]                      [Generate Master Key]
+ |                       |                                          |
+ |                       |=== 3. Message Encryption (A -> B) ======>|
+ |                       |                                          |
+ |                   [Padding]                                      |
+ |               [Feistel Encrypt]                                  |
+ |                       |                                          |
+ |                       |         Ciphertext Blocks (C_i)          |
+ |                       | =======================================> |
+ |                       |                                          |
+ |                       |                                    [Feistel Decrypt]
+ |                       |                                    [Remove Padding]
+ |                       |                                 [Read Original Message]

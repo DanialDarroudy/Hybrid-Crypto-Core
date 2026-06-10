@@ -1,5 +1,4 @@
 class Certificate:
-
     def __init__(self, user_id: str, n: int, e: int, ca_signature: int):
         self.user_id = user_id
         self.n = n
