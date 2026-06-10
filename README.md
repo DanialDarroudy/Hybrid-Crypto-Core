@@ -1,37 +1,141 @@
-# Hybrid-Crypto-Core 🛡️
+# Secure Cryptography System  
+**Network & Data Security Course Project**
 
-A high-performance cryptographic simulation built from scratch in Python. This project demonstrates a complete secure communication pipeline, integrating both symmetric and asymmetric cryptography without relying on external crypto libraries.
+## 📌 Overview
 
-## 🚀 Key Features
+This project is a simplified secure communication system that demonstrates the core concepts of modern cryptography, including:
 
-- **Custom Public Key Infrastructure (PKI):** Implementation of a simulated Certificate Authority (CA) for identity verification and digital certificates.
-- **Asymmetric Encryption (RSA):** Full implementation of RSA for secure key exchange and digital signatures (Key generation, prime numbers, and modular arithmetic).
-- **Symmetric Block Cipher (Feistel):** A custom 4-round Feistel network for efficient and secure message encryption.
-- **Key Exchange:** Secure session key establishment using the Diffie-Hellman (DH) protocol.
-- **Zero Dependencies:** All cryptographic primitives are implemented using pure Python to demonstrate deep understanding of the underlying mathematics.
+- ✅ RSA public key cryptography  
+- ✅ Public Key Infrastructure (PKI) with a Certification Authority (CA)  
+- ✅ Authenticated Diffie-Hellman key exchange (MITM protection)  
+- ✅ Digital signatures  
+- ✅ A custom-designed Feistel block cipher  
+- ✅ ISO/IEC-style padding  
 
-## 🏗️ System Architecture
+The system simulates secure communication between two users (**User A** and **User B**) under the supervision of a trusted **Certification Authority (CA)**.
 
-The project simulates a real-world secure handshake and messaging flow:
-1. **Registration:** Users register with the **CA** and receive signed certificates (RSA).
-2. **Handshake:** Two parties authenticate each other and exchange a shared secret via **Diffie-Hellman**.
-3. **Secure Messaging:** Messages are encrypted/decrypted using the **Feistel Cipher** with the shared session key.
-
-## 🛠️ Technologies Used
-- **Language:** Python 3.x
-- **Concepts:** Modular Arithmetic, Prime Number Generation, Padding (PKCS7 style), Bitwise Operations.
-
-## 📂 Project Structure
-- `CA/`: Logic for the Certificate Authority and digital signatures.
-- `Ciphers/`: Implementation of RSA and the 4-round Feistel network.
-- `Protocol/`: Diffie-Hellman key exchange and session management.
-- `main.py`: Interactive CLI to simulate the entire process.
-
-## 📝 How it Works
-1. Run `python main.py`
-2. Generate RSA keys for the CA and Users.
-3. Perform the authenticated Diffie-Hellman exchange.
-4. Send encrypted messages between simulated users.
+All cryptographic components are implemented manually without using external cryptography libraries, as required by the project specification.
 
 ---
-*This project was developed as part of a Cryptography course to demonstrate the practical application of secure protocols.*
+
+## 🏗 System Architecture
+
+The project is organized into modular components:
+
+```
+core/        → Cryptographic primitives (RSA, DH, hashing, signatures)
+models/      → User, CA, Certificate, DH message structures
+symmetric/   → Feistel cipher, padding, binary converters
+ui/          → Command-line interface
+main.py      → Program entry point
+```
+
+### Main Entities
+
+- **CA (Certification Authority)**
+  - Generates RSA key pair
+  - Issues digital certificates for users
+  - Verifies certificates
+
+- **User A & User B**
+  - Generate RSA key pairs
+  - Receive certificates from CA
+  - Perform authenticated Diffie-Hellman
+  - Encrypt and decrypt messages using a shared master key
+
+---
+
+## 🔐 Security Workflow
+
+### 1️⃣ System Initialization
+- CA generates RSA keys
+- Users A and B generate RSA keys
+- CA issues digital certificates
+- Users verify their certificates using CA's public key
+
+### 2️⃣ Authenticated Diffie-Hellman
+- Users generate DH private/public values
+- Each public value is digitally signed
+- Certificates and signatures are verified
+- A shared secret is computed
+- A 16-bit `master_key` is derived
+
+✅ This prevents Man-in-the-Middle (MITM) attacks.
+
+---
+
+### 3️⃣ Symmetric Encryption (Feistel Cipher)
+
+A custom 16-bit block cipher is implemented using:
+
+- 4 Feistel rounds
+- XOR with round keys
+- 4×4 S-Box
+- 8-bit P-Box permutation
+- ISO/IEC-style padding
+
+Messages are:
+1. Converted to binary
+2. Padded
+3. Split into 16-bit blocks
+4. Encrypted using the derived master key
+
+Decryption reverses the process.
+
+---
+
+## 🧠 Educational Objectives
+
+This project demonstrates:
+
+- How RSA key generation works (prime selection, φ(n), modular inverse)
+- How digital signatures are created and verified
+- How certificates bind identity to public keys
+- Why Diffie-Hellman alone is vulnerable to MITM
+- How authentication prevents active attacks
+- How block ciphers operate internally (Feistel structure)
+- Bitwise operations in cryptography
+
+---
+
+## ▶️ How to Run
+
+```bash
+python main.py
+```
+
+Follow the interactive menu:
+
+1. Initialize system  
+2. Establish shared key  
+3. Encrypt message (A → B)  
+4. Decrypt message (B)  
+5. Show system status  
+6. Exit  
+
+---
+
+## ⚠️ Important Notes
+
+- This project is for **educational purposes only**.
+- Small prime ranges and simplified hashing are intentionally used.
+- The system is **not secure for real-world usage**.
+- No external cryptography libraries were used.
+
+---
+
+## 📚 Technologies Used
+
+- Python 3
+- Pure built-in functions only
+- Bitwise arithmetic (`^`, `>>`, `&`)
+- Modular exponentiation (`pow(base, exp, mod)`)
+
+---
+
+## ✅ Project Status
+
+✔ Fully functional  
+✔ Authenticated key exchange  
+✔ Successful encryption & decryption  
+✔ MITM protection implemented
