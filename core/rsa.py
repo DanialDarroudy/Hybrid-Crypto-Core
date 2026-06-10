@@ -3,8 +3,6 @@ from typing import Any
 
 
 def is_prime(x: int) -> bool:
-    if x < 2:
-        return False
     for i in range(2, int(x ** 0.5) + 1):
         if x % i == 0:
             return False
@@ -37,10 +35,6 @@ def generate_rsa_keys():
         n = p * q
         phi = (p - 1) * (q - 1)
         e = 257
-
-        g, _, _ = extended_euclidean(e, phi)
-        if g != 1:
-            continue
 
         d = mod_inverse(e, phi)
         if d is None:
