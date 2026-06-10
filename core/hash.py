@@ -1,5 +1,5 @@
 def simple_hash(data: str) -> int:
-    h = 0
-    for b in data.encode():
-        h ^= b
-    return h
+    hash = 0
+    for byte in data.encode():
+        hash ^= byte
+    return hash
